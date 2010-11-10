@@ -1,0 +1,47 @@
+<!DOCTYPE>
+<html>
+<head>
+    <title>Sample test</title>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.4.2.min.js"></script>
+</head>
+<body>
+    <h1>Hello world!</h1>
+    <form method='POST' action='./'>
+        <input type="text" name='data' id="data" />
+        <div><input type='submit'></div>
+    </form>
+    <div id="log">
+    	{% for message in messages %}
+         	<p>{{ message }}</p>
+      	{% end %}
+    </div>
+    <script type="text/javascript" charset="utf-8">
+        $(document).ready(function(){
+            
+            $('form').submit(function(event){
+                var value = $('#data').val();
+                $.post("./", { data: value }, function(data){
+                    $("#data").val('');
+                });
+                return false;
+            });
+            
+            if ("WebSocket" in window) {
+              var ws = new WebSocket("ws://127.0.0.1:8888/realtime/");
+              ws.onopen = function() {console.log("opened ws")};
+              ws.onmessage = function (evt) {
+				  console.log("in onmessage");
+                  var received_msg = evt.data;
+                  var html = $("#log").html();
+                  html += "<p>"+received_msg+"</p>";
+                  $("#log").html(html);
+              };
+			  ws.onerror = function() {console.log("error")};
+              ws.onclose = function() {console.log("closed ws")};
+            } else {
+              alert("WebSocket not supported");
+            }
+        });
+    </script>
+</body>
+</html>
