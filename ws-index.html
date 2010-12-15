@@ -2,7 +2,18 @@
 <html>
 <head>
     <title>Sample test</title>
-    <script type="text/javascript" src="http://code.jquery.com/jquery-1.4.2.min.js"></script>
+    <script type="text/javascript" src="/static/jquery-1.4.2.min.js"></script>
+	<script type="text/javascript" src="/static/Three.js"></script>
+	<style>
+		ul#log {
+			-webkit-perspective: 600;
+			-webkit-transition: -webkit-transform 1s;
+		}
+		ul#log li {
+			-webkit-transform: rotateY(45deg);
+		}
+
+	</style>
 </head>
 <body>
     <h1>Hello world!</h1>
@@ -10,11 +21,11 @@
         <input type="text" name='data' id="data" />
         <div><input type='submit'></div>
     </form>
-    <div id="log">
+    <ul id="log">
     	{% for message in messages %}
-         	<p>{{ message }}</p>
+         	<li>{{ message }}</li>
       	{% end %}
-    </div>
+    </ul>
     <script type="text/javascript" charset="utf-8">
         $(document).ready(function(){
             
@@ -33,7 +44,7 @@
 				  console.log("in onmessage");
                   var received_msg = evt.data;
                   var html = $("#log").html();
-                  html += "<p>"+received_msg+"</p>";
+                  html += "<li>"+received_msg+"</li>";
                   $("#log").html(html);
               };
 			  ws.onerror = function() {console.log("error")};
