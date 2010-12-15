@@ -7,7 +7,10 @@ import tornado.ioloop
 import tornado.web
 import redis
 import logging
+import os
 logging.getLogger().setLevel(logging.DEBUG)
+
+DEBUG = True # reload server on code changes
 
 STREAM_LENGTH = 5
 listeners = []
@@ -41,7 +44,8 @@ class RealtimeHandler(websocket.WebSocketHandler):
         listeners.remove(self)
         
 settings = {
-    'auto_reload': True,
+    "static_path": os.path.join(os.path.dirname(__file__), "static"),
+    "debug": DEBUG,
 }
 
 application = tornado.web.Application([
