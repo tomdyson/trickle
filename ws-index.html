@@ -2,30 +2,84 @@
 <html>
 <head>
     <title>Sample test</title>
-    <script type="text/javascript" src="/static/jquery-1.4.2.min.js"></script>
-	<script type="text/javascript" src="/static/Three.js"></script>
+    <script type="text/javascript" src="{{ static_url("jquery-1.4.2.min.js") }}"></script>
+	<script type="text/javascript" src="{{ static_url("Three.js") }}"></script>
+	<link href='http://fonts.googleapis.com/css?family=Luckiest+Guy' rel='stylesheet' type='text/css'>
 	<style>
-		ul#log {
-			-webkit-perspective: 600;
-			-webkit-transition: -webkit-transform 1s;
-		}
-		ul#log li {
-			-webkit-transform: rotateY(45deg);
+
+		body {
+			font-family: 'Luckiest Guy', arial, serif;
+			margin: 30px 0px;
+		    padding: 0px;
+		    text-align: center;
+			-webkit-animation-name: bodyBackground;
+			-webkit-animation-duration: 20s;
+			-webkit-animation-iteration-count: infinite;
+			-webkit-animation-timing-function: linear;
 		}
 
+		h1 {
+			font-size: 90px;
+			color: white;
+		}
+
+		div#main {
+		    width: 400px;
+		    margin: 0px auto;
+		    text-align: left;
+		    padding: 0px;
+		}
+
+		@-webkit-keyframes bodyBackground {
+			from {
+				background-color: #fff;
+			}
+			25% {
+				background-color: #fc3;
+			}
+			50% {
+				background-color: #3f9;
+			}
+			75% {
+				background-color: #c3f;
+			}
+			to {
+				background-color: #fff;
+			}
+		}
+		ul#log {
+			font-size: 50px;
+			width: 400px;
+			list-style-type: none;
+			margin-left: 0px;
+			-webkit-animation-name: 'spinnerRotate';
+			-webkit-animation-duration: 20s;
+			-webkit-animation-iteration-count: 10;
+			-webkit-animation-timing-function: linear;
+		}
+		@-webkit-keyframes spinnerRotate {
+			from {
+				-webkit-transform:rotate(0deg);
+			}
+			to {
+				-webkit-transform:rotate(360deg);
+			}
+		}
 	</style>
 </head>
 <body>
-    <h1>Hello world!</h1>
-    <form method='POST' action='./'>
-        <input type="text" name='data' id="data" />
-        <div><input type='submit'></div>
-    </form>
+	<div id = "main">
+    <h1>Trickle</h1>
     <ul id="log">
     	{% for message in messages %}
          	<li>{{ message }}</li>
       	{% end %}
     </ul>
+	<form method='POST' action='./'>
+        <input type="text" name='data' id="data" />
+        <div><input type='submit' value = 'tell trickle'></div>
+    </form>
+	</div>
     <script type="text/javascript" charset="utf-8">
         $(document).ready(function(){
             
