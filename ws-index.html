@@ -3,69 +3,8 @@
 <head>
     <title>Sample test</title>
     <script type="text/javascript" src="{{ static_url("jquery-1.4.2.min.js") }}"></script>
-	<script type="text/javascript" src="{{ static_url("Three.js") }}"></script>
 	<link href='http://fonts.googleapis.com/css?family=Luckiest+Guy' rel='stylesheet' type='text/css'>
-	<style>
-
-		body {
-			font-family: 'Luckiest Guy', arial, serif;
-			margin: 30px 0px;
-		    padding: 0px;
-		    text-align: center;
-			-webkit-animation-name: bodyBackground;
-			-webkit-animation-duration: 20s;
-			-webkit-animation-iteration-count: infinite;
-			-webkit-animation-timing-function: linear;
-		}
-
-		h1 {
-			font-size: 90px;
-			color: white;
-		}
-
-		div#main {
-		    width: 400px;
-		    margin: 0px auto;
-		    text-align: left;
-		    padding: 0px;
-		}
-
-		@-webkit-keyframes bodyBackground {
-			from {
-				background-color: #fff;
-			}
-			25% {
-				background-color: #fc3;
-			}
-			50% {
-				background-color: #3f9;
-			}
-			75% {
-				background-color: #c3f;
-			}
-			to {
-				background-color: #fff;
-			}
-		}
-		ul#log {
-			font-size: 50px;
-			width: 400px;
-			list-style-type: none;
-			margin-left: 0px;
-			-webkit-animation-name: 'spinnerRotate';
-			-webkit-animation-duration: 20s;
-			-webkit-animation-iteration-count: 10;
-			-webkit-animation-timing-function: linear;
-		}
-		@-webkit-keyframes spinnerRotate {
-			from {
-				-webkit-transform:rotate(0deg);
-			}
-			to {
-				-webkit-transform:rotate(360deg);
-			}
-		}
-	</style>
+	<link href='{{ static_url("screen.css") }}' rel='stylesheet' type='text/css'>
 </head>
 <body>
 	<div id = "main">

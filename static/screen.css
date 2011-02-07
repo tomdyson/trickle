@@ -1,0 +1,50 @@
+body {
+	font-family: 'Luckiest Guy', arial, serif;
+	margin: 30px 0px;
+    padding: 0px;
+    text-align: center;
+	-webkit-animation-name: bodyBackground;
+	-webkit-animation-duration: 20s;
+	-webkit-animation-iteration-count: infinite;
+	-webkit-animation-timing-function: linear;
+}
+
+h1 {
+	font-size: 90px;
+	color: white;
+}
+
+div#main {
+    width: 400px;
+    margin: 0px auto;
+    text-align: left;
+    padding: 0px;
+}
+
+@-webkit-keyframes bodyBackground {
+	from { background-color: #fff; }
+	25% { background-color: #fc3; }
+	50% { background-color: #3f9; }
+	75% { background-color: #c3f; }
+	to { background-color: #fff; }
+}
+
+ul#log {
+	font-size: 50px;
+	width: 400px;
+	list-style-type: none;
+	margin-left: 0px;
+	-webkit-animation-name: 'spinnerRotate';
+	-webkit-animation-duration: 20s;
+	-webkit-animation-iteration-count: 10;
+	-webkit-animation-timing-function: linear;
+}
+
+@-webkit-keyframes spinnerRotate {
+	from {
+		-webkit-transform:rotate(0deg);
+	}
+	to {
+		-webkit-transform:rotate(360deg);
+	}
+}
